@@ -1,38 +1,284 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  color: #f5f5f5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  height: 100vh; /* Full height */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2a2a2a;
+  padding: 20px;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.sidebar h2 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.history-item.success {
+  background-color: #28a745;
+}
+
+.history-item.failure {
+  background-color: #dc3545;
+}
+
+.history-item:hover {
+  background-color: #444444;
+}
+
+.history-icon {
+  font-size: 18px;
+}
+
+.success-icon {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.failure-icon {
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
+.main-content {
+  margin-left: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: calc(100% - 250px);
+  flex-direction: column;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+  position: relative; /* Added to allow absolute positioning of profile icon */
+}
+
+.profile-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Makes the icon round */
+  background-color: #444; /* Background color for the profile icon */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 60px; /* Adjust based on profile icon's position */
+  right: 0;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  display: none; /* Hide dropdown by default */
+  z-index: 1000;
+}
+
+.profile-menu.open .profile-dropdown {
+  display: block; /* Show dropdown when profile menu is open */
+}
+
+.profile-dropdown button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  color: #f5f5f5;
+  transition: background-color 0.3s ease;
+}
+
+.profile-dropdown button:hover {
+  background-color: #444444;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  background-color: #333333;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  background-color: #333333;
+  color: #f5f5f5;
+  font-size: 16px;
+}
+
+.input-field::placeholder {
+  color: #cccccc;
+}
+
+.icon {
+  color: gray; /* Updated to gray */
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #ffffff;
+}
+
+.sandglass-icon {
+  animation: rotate 2s linear infinite; /* Animated sandglass */
+  margin-right: 10px;
+}
+
+@keyframes rotate {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  color: #ff9800; /* Orange color for loading text */
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.result {
+  margin-top: 30px;
+  color: #e5e5e5;
+  text-align: center;
+}
+
+pre {
+  background-color: #2a2a2a;
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  border: 1px solid #555555;
+  color: #e5e5e5;
+  text-align: left;
+}
+
+.image-preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+
+.modal {
+  background-color: #333;
+  color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.responses {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.response {
+  background-color: #2a2a2a;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #f5f5f5;
+}
+
+.response.success {
+  border-left: 5px solid #4caf50;
+}
+
+.response.failure {
+  border-left: 5px solid #f44336;
+}
+
+/* Add to existing CSS */
+
+.logo {
+  position: absolute;
+  top: 20px; /* Adjust based on your needs */
+  right: 70px; /* Adjust to make space for the profile icon */
+  font-size: 24px; /* Adjust the size of the logo icon */
+  color: #ffffff; /* Color of the logo icon */
+  cursor: pointer;
+  z-index: 1000; /* Ensure it appears above other elements */
 }

@@ -1,0 +1,45 @@
+/* src/ProfileMenu.css */
+.profile-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-icon {
+    cursor: pointer;
+  }
+  
+  .menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+    z-index: 1000;
+  }
+  
+  .menu button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .menu button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .logout-btn {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logout-btn svg {
+    margin-right: 8px;
+  }
+  
