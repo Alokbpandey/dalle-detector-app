@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DALL-E Detector App
 
 This project is a DALL-E image detector application built with React. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -43,3 +44,6 @@ For more information about Create React App, you can refer to the [Create React 
 ## License
 
 [Add your license information here.]
+=======
+# dalle-detector-app
+>>>>>>> 535f2047079ca222ce17cc191419c8bfbc45ef5e
